@@ -1,14 +1,20 @@
 import json, itertools, os
-from nltk.corpus import wordnet
 
 def gather_anagrams(input_word):
     # use itertools to find all possible combinations of word
     anagrams = sorted(set(["".join(permutation) for permutation in itertools.permutations(input_word)]))
     anagrams_list = []
-    for each_word in anagrams:
-        if wordnet.synsets(each_word):
-            anagrams_list.append(each_word)
+    
+    # create a dictionary to cross-check anagrams for words
+    filename = "my_dict.txt"
+    with open(filename) as f:
+        content = f.readlines()
+    content = [x.strip() for x in content] 
+    for each_anagram in anagrams:
+       if each_anagram in content:
+          anagrams_list.append(each_anagram)
     return anagrams_list
+
 
 def lambda_handler(event, context):
     input_word = ""                 # initiate empty string
@@ -33,4 +39,3 @@ def lambda_handler(event, context):
         'headers': {'Content-Type': 'application/json'},
         'body': json.dumps(message)
     }
-
