@@ -25,7 +25,7 @@ def lambda_handler(event, context):
     try:
         input_word = event['queryStringParameters']['word']
         if input_word:
-            anagrams = gather_anagrams(input_word)
+            anagrams = gather_anagrams(input_word.lower())
             statuscode = 200
     except:
         pass
