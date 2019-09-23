@@ -1,18 +1,19 @@
 import json, itertools
 
 def gather_anagrams(input_word):
+    # use itertools to find all possible combinations of word
     anagrams = sorted(set(["".join(permutation) for permutation in itertools.permutations(input_word)]))
     return anagrams
 
 def lambda_handler(event, context):
-    # define input word and set output anagrams
-    input_word = ""
-    anagrams = ["invalid request"]
-    statuscode = 400
+    input_word = ""                 # initiate empty string
+    anagrams = ["invalid request"]  # default to invalid
+    statuscode = 400                # default to forbidden
+    
+    # test paramter and set input word + find anagrams if valid
     try:
         input_word = event['queryStringParameters']['word']
         if input_word:
-            # if word is present, find anagrams
             anagrams = gather_anagrams(input_word)
             statuscode = 200
     except:
