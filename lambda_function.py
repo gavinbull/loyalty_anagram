@@ -1,14 +1,14 @@
 import json, itertools, os
+from nltk.corpus import wordnet
 
 def gather_anagrams(input_word):
-    
     # use itertools to find all possible combinations of word
     anagrams = sorted(set(["".join(permutation) for permutation in itertools.permutations(input_word)]))
-    my_dict = enchant.Dict("en_US")
+    anagrams_list = []
     for each_word in anagrams:
-        if my_dict.check(each_word):
-            my_dict.append(each_word)
-    return my_dict
+        if wordnet.synsets(each_word):
+            anagrams_list.append(each_word)
+    return anagrams_list
 
 def lambda_handler(event, context):
     input_word = ""                 # initiate empty string
@@ -33,3 +33,4 @@ def lambda_handler(event, context):
         'headers': {'Content-Type': 'application/json'},
         'body': json.dumps(message)
     }
+
