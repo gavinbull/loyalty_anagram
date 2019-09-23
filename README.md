@@ -14,11 +14,13 @@ API KEY for testing:   ZSvI1Bxj5r89aelpGm5YH31t3PVjGpaZ3woHHbd0
 
 ## Usage
 
-curl -H 'X-Api-Key:ZSvI1Bxj5r89aelpGm5YH31t3PVjGpaZ3woHHbd0' 'https://r8zw8hu6zf.execute-api.us-east-1.amazonaws.com/test/anagram?word=ciNeMa'
-
-{"anagrams": "['anemic', 'cinema', 'iceman']"}
+> curl -H 'X-Api-Key:ZSvI1Bxj5r89aelpGm5YH31t3PVjGpaZ3woHHbd0' 'https://r8zw8hu6zf.execute-api.us-east-1.amazonaws.com/test/anagram?word=ciNeMa'
+>
+>>{"anagrams": "['anemic', 'cinema', 'iceman']"}
 
 ## Unit Test
 
-test_lambda_function.py
+Basic test using input word "cinema" and testing result
+
+> test_lambda_function.py
 
