@@ -1,12 +1,12 @@
 import json, itertools, os
-from nltk.corpus import wordnet
+from nltk.corpus import wordnet as wn
 
 def gather_anagrams(input_word):
     # use itertools to find all possible combinations of word
     anagrams = sorted(set(["".join(permutation) for permutation in itertools.permutations(input_word)]))
     anagrams_list = []
     for each_word in anagrams:
-        if wordnet.synsets(each_word):
+        if nw.synsets(each_word):
             anagrams_list.append(each_word)
     return anagrams_list
 
