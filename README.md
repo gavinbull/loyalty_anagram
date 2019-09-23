@@ -10,4 +10,5 @@ API KEY for testing:   ZSvI1Bxj5r89aelpGm5YH31t3PVjGpaZ3woHHbd0
 Usage e.g.
 
 curl -H 'X-Api-Key:ZSvI1Bxj5r89aelpGm5YH31t3PVjGpaZ3woHHbd0' 'https://r8zw8hu6zf.execute-api.us-east-1.amazonaws.com/test/anagram?word=ciNeMa'
+{"anagrams": "['anemic', 'cinema', 'iceman']"}
 
